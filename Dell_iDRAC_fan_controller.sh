@@ -14,8 +14,7 @@ trap 'graceful_exit' SIGINT SIGQUIT SIGTERM
 # readonly DELL_FRESH_AIR_COMPLIANCE=45
 
 # Check if FAN_SPEED variable is in hexadecimal format. If not, convert it to hexadecimal
-if [[ $FAN_SPEED == 0x* ]]
-then
+if [[ $FAN_SPEED == 0x* ]]; then
   readonly DECIMAL_FAN_SPEED=$(printf '%d' $FAN_SPEED)
   readonly HEXADECIMAL_FAN_SPEED=$FAN_SPEED
 else
@@ -191,8 +190,7 @@ while true; do
     apply_user_fan_control_profile
 
     # Check if user fan control profile is applied then apply it if not
-    if $IS_DELL_FAN_CONTROL_PROFILE_APPLIED
-    then
+    if $IS_DELL_FAN_CONTROL_PROFILE_APPLIED; then
       IS_DELL_FAN_CONTROL_PROFILE_APPLIED=false
       COMMENT="CPU temperature decreased and is now OK (<= $CPU_TEMPERATURE_THRESHOLD°C), user's fan control profile applied."
     fi
